@@ -1,6 +1,8 @@
 
 # SkyBook - Sistem Booking Penerbangan
 
+[![Laravel Security CI](https://github.com/shokhifahtulj/skybook/actions/workflows/laravel.yml/badge.svg)](https://github.com/shokhifahtulj/skybook/actions/workflows/laravel.yml)
+
 SkyBook adalah sistem booking penerbangan berbasis Laravel 12 yang mendukung autentikasi Breeze, role admin/user, booking tiket, pemilihan kursi, e-ticket printable PDF, histori booking, pembatalan, validasi kapasitas, notifikasi sederhana, dan API RESTful dengan Sanctum.
 
 ## Daftar Fitur
@@ -28,6 +30,16 @@ SkyBook adalah sistem booking penerbangan berbasis Laravel 12 yang mendukung aut
 - QR code pada e-ticket
 - Validasi bentrok/jadwal dan kapasitas
 - Testing unit dan feature
+
+## Security Features
+
+- Laravel Sanctum untuk autentikasi token API
+- Proteksi middleware `auth:sanctum` dan `throttle:api`
+- Route protection untuk endpoint admin dan user
+- RBAC berbasis Spatie Permission
+- Validasi input dan exception handling terstruktur
+- Endpoint operasional dan sensitif dilindungi
+- CI/CD sederhana untuk audit dependensi, lint PHP, dan test
 
 ## Alur utama
 
