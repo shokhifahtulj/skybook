@@ -9,7 +9,13 @@ class EnsureUserRole
 {
     public function handle(Request $request, Closure $next, string $role)
     {
-        if (! $request->user() || $request->user()->role !== $role) {
+        $user = $request->user();
+
+        if (! $user) {
+            return redirect()->route('login');
+        }
+
+        if (! $user->hasRole($role)) {
             abort(403, 'Akses ditolak.');
         }
 

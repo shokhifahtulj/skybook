@@ -36,6 +36,7 @@ class RolePermissionSeeder extends Seeder
                     'name' => $account['name'],
                     'password' => Hash::make($account['password']),
                     'role' => $account['role'],
+                    'email_verified_at' => now(),
                 ]
             );
 

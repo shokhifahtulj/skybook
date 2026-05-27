@@ -20,7 +20,7 @@ class BookingApiController extends Controller
     public function index(Request $request)
     {
         $user = auth()->user();
-        $isAdmin = $user?->role === 'admin';
+        $isAdmin = $user?->hasRole('admin');
         $search = trim((string) $request->input('search', ''));
         $status = trim((string) $request->input('status', ''));
         $paymentStatus = trim((string) $request->input('payment_status', ''));
@@ -101,31 +101,56 @@ class BookingApiController extends Controller
         $this->authorize('create', Booking::class);
 
         $validated = $request->validated();
-        $schedule = Schedule::findOrFail($validated['schedule_id']);
+        $validatedSeats = (int) $validated['jumlah_tiket'];
 
-        if (! $this->availabilityService->canBook($schedule, (int) $validated['jumlah_tiket'])) {
-            return $this->errorResponse('Jumlah tiket melebihi kapasitas yang tersedia.', 422);
+        try {
+            $booking = \DB::transaction(function () use ($validated, $validatedSeats) {
+                // Lock schedule row to prevent concurrent reservations
+                $schedule = Schedule::where('id', $validated['schedule_id'])->lockForUpdate()->first();
+
+                if (! $schedule) {
+                    throw new \RuntimeException('Schedule not found.');
+                }
+
+                if (! $this->availabilityService->canBook($schedule, $validatedSeats)) {
+                    throw new \InvalidArgumentException('Jumlah tiket melebihi kapasitas yang tersedia.');
+                }
+
+                // Reserve seats (service will also use transactions/locking)
+                $this->availabilityService->reserve($schedule, $validatedSeats);
+
+                $b = Booking::create([
+                    'pnr' => strtoupper(Str::random(6)),
+                    'booking_status' => 'confirmed',
+                    'payment_status' => 'paid',
+                    'total_amount' => 0,
+                    'currency' => 'IDR',
+                    'booked_by' => auth()->id(),
+                    'user_id' => auth()->id(),
+                    'schedule_id' => $schedule->id,
+                    'flight_id' => $schedule->flight_id,
+                    'jumlah_tiket' => $validatedSeats,
+                    'total_harga' => 0,
+                    'status_booking' => 'confirmed',
+                    'expires_at' => now()->addMinutes(15),
+                ]);
+
+                return $b;
+            });
+        } catch (\InvalidArgumentException $e) {
+            return $this->errorResponse($e->getMessage(), 422);
         }
 
-        $this->availabilityService->reserve($schedule, (int) $validated['jumlah_tiket']);
-
-        $booking = Booking::create([
-            'pnr' => strtoupper(Str::random(6)),
-            'booking_status' => 'confirmed',
-            'payment_status' => 'paid',
-            'total_amount' => 0,
-            'currency' => 'IDR',
-            'booked_by' => auth()->id(),
-            'user_id' => auth()->id(),
-            'schedule_id' => $schedule->id,
-            'flight_id' => $schedule->flight_id,
-            'jumlah_tiket' => (int) $validated['jumlah_tiket'],
-            'total_harga' => 0,
-            'status_booking' => 'confirmed',
-            'expires_at' => now()->addMinutes(15),
-        ]);
-
         $booking->load(['schedule.flight', 'flight', 'user', 'bookedBy']);
+
+        // send booking confirmation email (if user has email)
+        try {
+            if ($booking->user && $booking->user->email) {
+                \Mail::queue(new \App\Mail\BookingConfirmed($booking));
+            }
+        } catch (\Throwable $e) {
+            // swallow mail errors to not affect API response
+        }
 
         return $this->successResponse('Booking berhasil dibuat', $booking);
     }
@@ -135,41 +160,47 @@ class BookingApiController extends Controller
         $this->authorize('update', $booking);
 
         $validated = $request->validated();
-        $newSchedule = Schedule::findOrFail($validated['schedule_id']);
+        $newSchedule = Schedule::where('id', $validated['schedule_id'])->lockForUpdate()->firstOrFail();
         $oldQuantity = (int) ($booking->jumlah_tiket ?? 1);
         $oldSchedule = $booking->schedule;
 
-        if ($oldSchedule && $oldSchedule->id !== $newSchedule->id) {
-            $this->availabilityService->release($oldSchedule, $oldQuantity);
+        try {
+            \DB::transaction(function () use ($newSchedule, $oldSchedule, $oldQuantity, $validated, $booking) {
+                if ($oldSchedule && $oldSchedule->id !== $newSchedule->id) {
+                    $this->availabilityService->release($oldSchedule, $oldQuantity);
+                }
+
+                $delta = (int) $validated['jumlah_tiket'] - $oldQuantity;
+
+                if ($delta > 0 && ! $this->availabilityService->canBook($newSchedule, $delta)) {
+                    throw new \InvalidArgumentException('Jumlah tiket melebihi kapasitas yang tersedia.');
+                }
+
+                if ($delta > 0) {
+                    $this->availabilityService->reserve($newSchedule, $delta);
+                }
+
+                if ($delta < 0) {
+                    $this->availabilityService->release($newSchedule, abs($delta));
+                }
+
+                $booking->update([
+                    'schedule_id' => $newSchedule->id,
+                    'flight_id' => $newSchedule->flight_id,
+                    'jumlah_tiket' => (int) $validated['jumlah_tiket'],
+                    'total_harga' => 0,
+                    'status_booking' => 'confirmed',
+                    'booking_status' => $booking->booking_status ?: 'confirmed',
+                    'payment_status' => $booking->payment_status ?: 'paid',
+                    'total_amount' => $booking->total_amount ?? 0,
+                    'currency' => $booking->currency ?: 'IDR',
+                    'booked_by' => $booking->booked_by ?? auth()->id(),
+                    'user_id' => $booking->user_id ?? auth()->id(),
+                ]);
+            });
+        } catch (\InvalidArgumentException $e) {
+            return $this->errorResponse($e->getMessage(), 422);
         }
-
-        $delta = (int) $validated['jumlah_tiket'] - $oldQuantity;
-
-        if ($delta > 0 && ! $this->availabilityService->canBook($newSchedule, $delta)) {
-            return $this->errorResponse('Jumlah tiket melebihi kapasitas yang tersedia.', 422);
-        }
-
-        if ($delta > 0) {
-            $this->availabilityService->reserve($newSchedule, $delta);
-        }
-
-        if ($delta < 0) {
-            $this->availabilityService->release($newSchedule, abs($delta));
-        }
-
-        $booking->update([
-            'schedule_id' => $newSchedule->id,
-            'flight_id' => $newSchedule->flight_id,
-            'jumlah_tiket' => (int) $validated['jumlah_tiket'],
-            'total_harga' => 0,
-            'status_booking' => 'confirmed',
-            'booking_status' => $booking->booking_status ?: 'confirmed',
-            'payment_status' => $booking->payment_status ?: 'paid',
-            'total_amount' => $booking->total_amount ?? 0,
-            'currency' => $booking->currency ?: 'IDR',
-            'booked_by' => $booking->booked_by ?? auth()->id(),
-            'user_id' => $booking->user_id ?? auth()->id(),
-        ]);
 
         $booking->load(['schedule.flight', 'flight', 'user', 'bookedBy']);
 
@@ -179,12 +210,17 @@ class BookingApiController extends Controller
     public function destroy(Booking $booking)
     {
         $this->authorize('delete', $booking);
+        \DB::transaction(function () use ($booking) {
+            if ($booking->schedule) {
+                // lock schedule before release
+                $s = Schedule::where('id', $booking->schedule->id)->lockForUpdate()->first();
+                if ($s) {
+                    $this->availabilityService->release($s, (int) ($booking->jumlah_tiket ?? 1));
+                }
+            }
 
-        if ($booking->schedule) {
-            $this->availabilityService->release($booking->schedule, (int) ($booking->jumlah_tiket ?? 1));
-        }
-
-        $booking->delete();
+            $booking->delete();
+        });
 
         return $this->successResponse('Booking berhasil dibatalkan', null);
     }

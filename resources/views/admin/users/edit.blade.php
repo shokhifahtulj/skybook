@@ -9,15 +9,18 @@
             @csrf
             @method('PUT')
 
+            @php
+                $currentRole = $user->hasRole('admin') ? 'admin' : 'user';
+            @endphp
             <div class="grid gap-4 md:grid-cols-2">
                 <x-admin.input name="name" label="Nama Lengkap" :value="old('name', $user->name)" required />
                 <x-admin.input name="email" label="Email" type="email" :value="old('email', $user->email)" required />
                 <x-admin.input name="password" label="Password Baru" type="password" placeholder="Biarkan kosong jika tidak ingin mengubah" />
                 <x-admin.input name="password_confirmation" label="Konfirmasi Password Baru" type="password" placeholder="Biarkan kosong jika tidak ingin mengubah" />
                 <div class="md:col-span-2">
-                    <x-admin.form-select name="role" label="Role" required :value="old('role', $user->role)">
-                        <option value="user" {{ old('role', $user->role) === 'user' ? 'selected' : '' }}>User</option>
-                        <option value="admin" {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin</option>
+                    <x-admin.form-select name="role" label="Role" required :value="old('role', $currentRole)">
+                        <option value="user" {{ old('role', $currentRole) === 'user' ? 'selected' : '' }}>User</option>
+                        <option value="admin" {{ old('role', $currentRole) === 'admin' ? 'selected' : '' }}>Admin</option>
                     </x-admin.form-select>
                 </div>
             </div>

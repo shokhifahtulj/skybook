@@ -159,9 +159,11 @@ php artisan test
 
 ## Deployment
 
-### GitHub
+### GitHub & CI/CD
 
-Simpan repo menggunakan Git, lalu push ke remote GitHub Anda.
+Repository ini dilengkapi dengan workflow GitHub Actions untuk menjalankan test dan langkah optimisasi. Workflow berada di `.github/workflows/laravel.yml`.
+
+Contoh langkah push ke GitHub:
 
 ```bash
 git remote add origin <URL_REPOSITORY>
@@ -170,7 +172,35 @@ git commit -m "Initial SkyBook release"
 git push -u origin main
 ```
 
-> Push ke GitHub tidak dapat dilakukan dari lingkungan ini tanpa kredensial remote yang tersedia.
+CI menjalankan `composer install`, `php artisan migrate`, `php artisan test`, dan caching (`config:cache`, `route:cache`, `view:cache`).
+
+### Deployment Guide
+
+1. Siapkan server (VPS/Platform) dengan PHP 8.2+, Composer, dan database.
+2. Clone repo dan set environment variables di `.env` (lihat bagian `Environment Variables` di bawah).
+3. Jalankan:
+
+```bash
+composer install --no-dev --optimize-autoloader
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+4. Siapkan queue worker (`php artisan queue:work`) jika ingin mengaktifkan pengiriman email asinkron.
+
+### Environment Variables (penting)
+
+Pastikan variabel berikut tersedia di `.env`:
+
+- `APP_URL`
+- `DB_CONNECTION`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`
+- `MAIL_MAILER`, `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_FROM_ADDRESS`, `MAIL_FROM_NAME`
+- `QUEUE_CONNECTION`
+
 
 ## Screenshot aplikasi
 

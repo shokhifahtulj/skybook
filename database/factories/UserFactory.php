@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 /**
  * @extends Factory<User>
@@ -32,6 +33,16 @@ class UserFactory extends Factory
             'role' => 'user',
             'remember_token' => Str::random(10),
         ];
+    }
+
+    public function configure(): static
+    {
+        return $this->afterCreating(function (User $user) {
+            $roleName = $user->role ?: 'user';
+
+            Role::firstOrCreate(['name' => $roleName]);
+            $user->syncRoles([$roleName]);
+        });
     }
 
     /**

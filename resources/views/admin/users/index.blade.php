@@ -33,12 +33,15 @@
     <x-admin.card>
         <x-admin.table :headers="['Nama', 'Email', 'Role', 'Terakhir Diperbarui', 'Aksi']" emptyMessage="Belum ada pengguna.">
             @foreach($users as $user)
+                @php
+                    $displayRole = $user->hasRole('admin') ? 'admin' : 'user';
+                @endphp
                 <tr class="hover:bg-slate-50 transition">
                     <td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900">{{ $user->name }}</td>
                     <td class="whitespace-nowrap px-6 py-4">{{ $user->email }}</td>
                     <td class="whitespace-nowrap px-6 py-4">
-                        <span class="inline-flex rounded-full px-3 py-1 text-xs font-semibold {{ $user->role === 'admin' ? 'bg-emerald-100 text-emerald-700' : 'bg-skybook-accent text-skybook-primary' }}">
-                            {{ $user->role }}
+                        <span class="inline-flex rounded-full px-3 py-1 text-xs font-semibold {{ $user->hasRole('admin') ? 'bg-emerald-100 text-emerald-700' : 'bg-skybook-accent text-skybook-primary' }}">
+                            {{ $displayRole }}
                         </span>
                     </td>
                     <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-500">{{ $user->updated_at->format('d M Y H:i') }}</td>
