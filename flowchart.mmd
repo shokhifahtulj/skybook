@@ -1,0 +1,485 @@
+flowchart TD
+
+R919b163ccbce393875954d244f0748ae["GET|HEAD admin/aircrafts"]
+Cde614ac758721f08108e9205dadf9cfe["AircraftController@index"]
+R919b163ccbce393875954d244f0748ae --> Cde614ac758721f08108e9205dadf9cfe
+
+R919b163ccbce393875954d244f0748ae["POST admin/aircrafts"]
+C25aa1b9b0d31aeb433dfcf86efd3a8c9["AircraftController@store"]
+R919b163ccbce393875954d244f0748ae --> C25aa1b9b0d31aeb433dfcf86efd3a8c9
+
+Rc0edc755fe789ba99da5ae7617e239ff["GET|HEAD admin/aircrafts/create"]
+C1a51f96edf04093b1cbdcc657692e51a["AircraftController@create"]
+Rc0edc755fe789ba99da5ae7617e239ff --> C1a51f96edf04093b1cbdcc657692e51a
+
+Re0abafba7d961264967f4a0b71d4192f["GET|HEAD admin/aircrafts/{aircraft}"]
+C3d90085e412e5623e20c022ab27d0fb5["AircraftController@show"]
+Re0abafba7d961264967f4a0b71d4192f --> C3d90085e412e5623e20c022ab27d0fb5
+
+Re0abafba7d961264967f4a0b71d4192f["PUT|PATCH admin/aircrafts/{aircraft}"]
+Cf1c6e0838913a4155b8787ff7add06fb["AircraftController@update"]
+Re0abafba7d961264967f4a0b71d4192f --> Cf1c6e0838913a4155b8787ff7add06fb
+
+Re0abafba7d961264967f4a0b71d4192f["DELETE admin/aircrafts/{aircraft}"]
+Cf652d92519567085636ea4fef414772c["AircraftController@destroy"]
+Re0abafba7d961264967f4a0b71d4192f --> Cf652d92519567085636ea4fef414772c
+
+R9d294a37a12205bf320350eb58b735dd["GET|HEAD admin/aircrafts/{aircraft}/edit"]
+Cacb9e1b178f35c7abb2cec65ec2e9592["AircraftController@edit"]
+R9d294a37a12205bf320350eb58b735dd --> Cacb9e1b178f35c7abb2cec65ec2e9592
+
+Rf50b1b12c1ee7fd4ea600aded1c188cb["GET|HEAD admin/aircrafts/{aircraft}/seats"]
+Cecdf091352adbe4962a20e4e3102e318["AircraftSeatController@…"]
+Rf50b1b12c1ee7fd4ea600aded1c188cb --> Cecdf091352adbe4962a20e4e3102e318
+
+Rfaa453d0727c8caf8d9430a09987379b["GET|HEAD admin/airlines"]
+C7165c61fc0cbfea057a4f3ec78d174b9["AirlineController@index"]
+Rfaa453d0727c8caf8d9430a09987379b --> C7165c61fc0cbfea057a4f3ec78d174b9
+
+Rfaa453d0727c8caf8d9430a09987379b["POST admin/airlines"]
+C409f4d73181061287c387f618d558dfb["AirlineController@store"]
+Rfaa453d0727c8caf8d9430a09987379b --> C409f4d73181061287c387f618d558dfb
+
+Rb824d4190530bf42e070799138931836["GET|HEAD admin/airlines/create"]
+C504041cfd1e4a5181b54bf3af607b303["AirlineController@create"]
+Rb824d4190530bf42e070799138931836 --> C504041cfd1e4a5181b54bf3af607b303
+
+R2f66cb7ef57182b62932ff5bf6a22b75["GET|HEAD admin/airlines/{airline}"]
+C96e16b9cb92940c4a2a297e9350580f5["AirlineController@show"]
+R2f66cb7ef57182b62932ff5bf6a22b75 --> C96e16b9cb92940c4a2a297e9350580f5
+
+R2f66cb7ef57182b62932ff5bf6a22b75["PUT|PATCH admin/airlines/{airline}"]
+Cb5943d37baa5884f33cb2278648f1ae1["AirlineController@update"]
+R2f66cb7ef57182b62932ff5bf6a22b75 --> Cb5943d37baa5884f33cb2278648f1ae1
+
+R2f66cb7ef57182b62932ff5bf6a22b75["DELETE admin/airlines/{airline}"]
+C4cd6715678d931e981fcb62ce6bb8be8["AirlineController@destroy"]
+R2f66cb7ef57182b62932ff5bf6a22b75 --> C4cd6715678d931e981fcb62ce6bb8be8
+
+Rf744249ee1f72a9c3eddc0f421d32916["GET|HEAD admin/airlines/{airline}/edit"]
+Ccf7d36f0b5ff4ac679ffbafe7153285a["AirlineController@edit"]
+Rf744249ee1f72a9c3eddc0f421d32916 --> Ccf7d36f0b5ff4ac679ffbafe7153285a
+
+R298246c6e702318ba6123fab74370a94["GET|HEAD admin/airports"]
+C179d238bc8e5bd5c7311cde74468f8bd["AirportController@index"]
+R298246c6e702318ba6123fab74370a94 --> C179d238bc8e5bd5c7311cde74468f8bd
+
+R298246c6e702318ba6123fab74370a94["POST admin/airports"]
+C469d155d33c7952659211c01cf5a9d6e["AirportController@store"]
+R298246c6e702318ba6123fab74370a94 --> C469d155d33c7952659211c01cf5a9d6e
+
+Rfa6d89f1742f17caafb8257c487409d9["GET|HEAD admin/airports/create"]
+C3f2ffac5c6adc852a409f265e7acd8a7["AirportController@create"]
+Rfa6d89f1742f17caafb8257c487409d9 --> C3f2ffac5c6adc852a409f265e7acd8a7
+
+R8fb411a511213bc19c007bef22f5b43e["GET|HEAD admin/airports/{airport}"]
+Cb502777457aa9f50b433cc9836c821cf["AirportController@show"]
+R8fb411a511213bc19c007bef22f5b43e --> Cb502777457aa9f50b433cc9836c821cf
+
+R8fb411a511213bc19c007bef22f5b43e["PUT|PATCH admin/airports/{airport}"]
+C7b13578e3160f6a9f44226f746f29641["AirportController@update"]
+R8fb411a511213bc19c007bef22f5b43e --> C7b13578e3160f6a9f44226f746f29641
+
+R8fb411a511213bc19c007bef22f5b43e["DELETE admin/airports/{airport}"]
+C3a291e77f74327ac96946df745f473dc["AirportController@destroy"]
+R8fb411a511213bc19c007bef22f5b43e --> C3a291e77f74327ac96946df745f473dc
+
+R3c420bd5b18e908da68b1ff378db2294["GET|HEAD admin/airports/{airport}/edit"]
+C1b651c79b76877c9ba6b434cf7ed96e4["AirportController@edit"]
+R3c420bd5b18e908da68b1ff378db2294 --> C1b651c79b76877c9ba6b434cf7ed96e4
+
+Raf209260b21b66df06b0028951ca1c41["GET|HEAD admin/dashboard"]
+Cd78356701dce26af69cfd0cbfb4e660b["DashboardController@admin"]
+Raf209260b21b66df06b0028951ca1c41 --> Cd78356701dce26af69cfd0cbfb4e660b
+
+R019559531993033c59769ba17f40b8cf["GET|HEAD admin/flights"]
+Ccbf2ab359bf19c9ea2ca0d109c91cd2b["FlightController@index"]
+R019559531993033c59769ba17f40b8cf --> Ccbf2ab359bf19c9ea2ca0d109c91cd2b
+
+R019559531993033c59769ba17f40b8cf["POST admin/flights"]
+C38d96c844f2755d4dcec835f49fb010e["FlightController@store"]
+R019559531993033c59769ba17f40b8cf --> C38d96c844f2755d4dcec835f49fb010e
+
+Rbd383f8e5d733c35086088f553d05dfc["GET|HEAD admin/flights/create"]
+C9e5b70500a89c557fc96fb6a2fdb12be["FlightController@create"]
+Rbd383f8e5d733c35086088f553d05dfc --> C9e5b70500a89c557fc96fb6a2fdb12be
+
+R45f7055ced1fbe08cd8b4c2d64b83799["GET|HEAD admin/flights/{flight}"]
+Cb5e5cbbc024bd6094dd91b2ecd77dd00["FlightController@show"]
+R45f7055ced1fbe08cd8b4c2d64b83799 --> Cb5e5cbbc024bd6094dd91b2ecd77dd00
+
+R45f7055ced1fbe08cd8b4c2d64b83799["PUT|PATCH admin/flights/{flight}"]
+C8d37344701732a357b120e2f7ccc0b72["FlightController@update"]
+R45f7055ced1fbe08cd8b4c2d64b83799 --> C8d37344701732a357b120e2f7ccc0b72
+
+R45f7055ced1fbe08cd8b4c2d64b83799["DELETE admin/flights/{flight}"]
+Ca66dd9e5e52eb6ef8fedb22a8e384355["FlightController@destroy"]
+R45f7055ced1fbe08cd8b4c2d64b83799 --> Ca66dd9e5e52eb6ef8fedb22a8e384355
+
+R3718ad85a4f637e0132f2282aebb3d5f["GET|HEAD admin/flights/{flight}/edit"]
+C47868a5753978764316caac609897b06["FlightController@edit"]
+R3718ad85a4f637e0132f2282aebb3d5f --> C47868a5753978764316caac609897b06
+
+R4c2d272315921cbbd0acac0dc38a1f6e["GET|HEAD admin/operations"]
+Cfb63bd55beae4035461c9220549ec660["OperationsDashboardController@index"]
+R4c2d272315921cbbd0acac0dc38a1f6e --> Cfb63bd55beae4035461c9220549ec660
+
+R4da25a15d0405bddfb6d404b3f84b7f5["GET|HEAD admin/operations/gates"]
+Ce98e8404dabff6311a1a33ff7e40a172["GateController@index"]
+R4da25a15d0405bddfb6d404b3f84b7f5 --> Ce98e8404dabff6311a1a33ff7e40a172
+
+R9a73e83991a86160f80ce323e70ec120["GET|HEAD admin/operations/{schedule}"]
+C1de5d1707ebbccca24d3eaae41140e78["OperationsDashboardController@show"]
+R9a73e83991a86160f80ce323e70ec120 --> C1de5d1707ebbccca24d3eaae41140e78
+
+R846bf8dae059066e80ed065bec86b6ec["GET|HEAD admin/routes"]
+C046076582363d01694d9c2012164560b["RouteController@index"]
+R846bf8dae059066e80ed065bec86b6ec --> C046076582363d01694d9c2012164560b
+
+R846bf8dae059066e80ed065bec86b6ec["POST admin/routes"]
+C92225e983830e20bc9969b4e8bb57cc3["RouteController@store"]
+R846bf8dae059066e80ed065bec86b6ec --> C92225e983830e20bc9969b4e8bb57cc3
+
+R112a4c34a04361125c1a1b024571b010["GET|HEAD admin/routes/create"]
+C35b4e60d5cd332bd137d835f46d88459["RouteController@create"]
+R112a4c34a04361125c1a1b024571b010 --> C35b4e60d5cd332bd137d835f46d88459
+
+Ref97d2541af4f468807332e63b4b57cb["GET|HEAD admin/routes/{route}"]
+C456f3ef8654309b7ca23d305c8e00b22["RouteController@show"]
+Ref97d2541af4f468807332e63b4b57cb --> C456f3ef8654309b7ca23d305c8e00b22
+
+Ref97d2541af4f468807332e63b4b57cb["PUT|PATCH admin/routes/{route}"]
+C844095e7c453f3862140599afb7f5504["RouteController@update"]
+Ref97d2541af4f468807332e63b4b57cb --> C844095e7c453f3862140599afb7f5504
+
+Ref97d2541af4f468807332e63b4b57cb["DELETE admin/routes/{route}"]
+C1b59ae16405b2e1d2ed696038c904f4c["RouteController@destroy"]
+Ref97d2541af4f468807332e63b4b57cb --> C1b59ae16405b2e1d2ed696038c904f4c
+
+R1219eb64d87192ac5fa54ec0fca49cfd["GET|HEAD admin/routes/{route}/edit"]
+C1c2eb9055c2f0d679ed4369d1af4e700["RouteController@edit"]
+R1219eb64d87192ac5fa54ec0fca49cfd --> C1c2eb9055c2f0d679ed4369d1af4e700
+
+R7dd4f4d16836f3777f0064adc5f870a7["GET|HEAD admin/schedules"]
+Cf3b814861f3d3a159db86fee852c2293["ScheduleController@index"]
+R7dd4f4d16836f3777f0064adc5f870a7 --> Cf3b814861f3d3a159db86fee852c2293
+
+R7dd4f4d16836f3777f0064adc5f870a7["POST admin/schedules"]
+C8787bde673abac5b704b83269000739f["ScheduleController@store"]
+R7dd4f4d16836f3777f0064adc5f870a7 --> C8787bde673abac5b704b83269000739f
+
+Refaeffdbd7a1b50cb8272be6b0b62fba["GET|HEAD admin/schedules/create"]
+C82df47a80c86721961b31962fa6cc4ab["ScheduleController@create"]
+Refaeffdbd7a1b50cb8272be6b0b62fba --> C82df47a80c86721961b31962fa6cc4ab
+
+Rb2fde3a587ab70a632de2155036589a7["GET|HEAD admin/schedules/{schedule}"]
+Ca439a2f68265206e752c0daa97dad79c["ScheduleController@show"]
+Rb2fde3a587ab70a632de2155036589a7 --> Ca439a2f68265206e752c0daa97dad79c
+
+Rb2fde3a587ab70a632de2155036589a7["PUT|PATCH admin/schedules/{schedule}"]
+Cef4e26eb50427a9b8db524f1a21b6afa["ScheduleController@update"]
+Rb2fde3a587ab70a632de2155036589a7 --> Cef4e26eb50427a9b8db524f1a21b6afa
+
+Rb2fde3a587ab70a632de2155036589a7["DELETE admin/schedules/{schedule}"]
+Cb757ef92458c79ef7d1372dc498a38cb["ScheduleController@destroy"]
+Rb2fde3a587ab70a632de2155036589a7 --> Cb757ef92458c79ef7d1372dc498a38cb
+
+R6829911c3f364976c1ec451e62fa7aa9["GET|HEAD admin/schedules/{schedule}/edit"]
+C2064f04fe7c924e91f4f57a5fac616db["ScheduleController@edit"]
+R6829911c3f364976c1ec451e62fa7aa9 --> C2064f04fe7c924e91f4f57a5fac616db
+
+R560f31e39742c4288a232fc60c3390cd["GET|HEAD admin/users"]
+C16de4bf4d701e0a8899524fdf59a35cc["UserController@index"]
+R560f31e39742c4288a232fc60c3390cd --> C16de4bf4d701e0a8899524fdf59a35cc
+
+R560f31e39742c4288a232fc60c3390cd["POST admin/users"]
+C9f1012602a5a503e175b7ed291bea7f3["UserController@store"]
+R560f31e39742c4288a232fc60c3390cd --> C9f1012602a5a503e175b7ed291bea7f3
+
+Ra502d10959e6eb74e3dc40ac0a5e2427["GET|HEAD admin/users/create"]
+C0794fbf8e0f4d3c1d03839faa184b63c["UserController@create"]
+Ra502d10959e6eb74e3dc40ac0a5e2427 --> C0794fbf8e0f4d3c1d03839faa184b63c
+
+Raabf91abaa05fbae2fcca0ad8f2b095b["GET|HEAD admin/users/{user}"]
+C19635784a6fb6afa67279edfa529fdf6["UserController@show"]
+Raabf91abaa05fbae2fcca0ad8f2b095b --> C19635784a6fb6afa67279edfa529fdf6
+
+Raabf91abaa05fbae2fcca0ad8f2b095b["PUT|PATCH admin/users/{user}"]
+C81bea6c0da0ef2d594169c5bd504e0d7["UserController@update"]
+Raabf91abaa05fbae2fcca0ad8f2b095b --> C81bea6c0da0ef2d594169c5bd504e0d7
+
+Raabf91abaa05fbae2fcca0ad8f2b095b["DELETE admin/users/{user}"]
+Cb0311fc6d94bda8524481fc344741980["UserController@destroy"]
+Raabf91abaa05fbae2fcca0ad8f2b095b --> Cb0311fc6d94bda8524481fc344741980
+
+Rda76643b063015a0630c262106aafa54["GET|HEAD admin/users/{user}/edit"]
+C3dd5b6db618153deda3c0e1dc3e2788d["UserController@edit"]
+Rda76643b063015a0630c262106aafa54 --> C3dd5b6db618153deda3c0e1dc3e2788d
+
+Rce7ad624030bbbd3e40a4056d6afccbc["GET|HEAD api/baggage-tags/{tag}/render"]
+Caacc4c4d7c01a1fc9da089a661258e81["BaggageTagRenderController@render"]
+Rce7ad624030bbbd3e40a4056d6afccbc --> Caacc4c4d7c01a1fc9da089a661258e81
+
+R42551eb624cf6b3529a42f33c6e5d86f["POST api/bookings"]
+C54526d835ae7d143e83eba4fa1f222d6["BookingApiController@store"]
+R42551eb624cf6b3529a42f33c6e5d86f --> C54526d835ae7d143e83eba4fa1f222d6
+
+R42551eb624cf6b3529a42f33c6e5d86f["GET|HEAD api/bookings"]
+C83e90526c597196aab2f269d5cee5a4e["BookingApiController@index"]
+R42551eb624cf6b3529a42f33c6e5d86f --> C83e90526c597196aab2f269d5cee5a4e
+
+R3c84f3d29c55f76f5bf99209da48182a["POST api/bookings/create-draft"]
+C91cd231129929f016901ea8143af0bd6["BookingController@store"]
+R3c84f3d29c55f76f5bf99209da48182a --> C91cd231129929f016901ea8143af0bd6
+
+R3efda4e4253b2bf84c5d401a7b023a31["PUT api/bookings/{booking}"]
+C2d8e2b1efd47fb20aa47565477c9722b["BookingApiController@update"]
+R3efda4e4253b2bf84c5d401a7b023a31 --> C2d8e2b1efd47fb20aa47565477c9722b
+
+R3efda4e4253b2bf84c5d401a7b023a31["GET|HEAD api/bookings/{booking}"]
+C5c2a618b4521cd10ee1b952c299d9562["BookingApiController@show"]
+R3efda4e4253b2bf84c5d401a7b023a31 --> C5c2a618b4521cd10ee1b952c299d9562
+
+R3efda4e4253b2bf84c5d401a7b023a31["DELETE api/bookings/{booking}"]
+C939e5e34bb236d4bb259aa9b15ddb39f["BookingApiController@destroy"]
+R3efda4e4253b2bf84c5d401a7b023a31 --> C939e5e34bb236d4bb259aa9b15ddb39f
+
+R9bf9faaee03207fc6ba82d71559e28dc["POST api/bookings/{pnr}/pay/failed"]
+Ca5937f42dcce9a3eee424c376a336505["PaymentController@simulateFa…"]
+R9bf9faaee03207fc6ba82d71559e28dc --> Ca5937f42dcce9a3eee424c376a336505
+
+R66924179e75675d5852ad71b5229885b["POST api/bookings/{pnr}/pay/success"]
+C5bc57eb2d79249c919c69502f75083c8["PaymentController@simulateS…"]
+R66924179e75675d5852ad71b5229885b --> C5bc57eb2d79249c919c69502f75083c8
+
+Ra8b872be9c9808496ada9cfd07f97f90["GET|HEAD api/flights"]
+C8202443e26b7883d7cbd7fad0933edf6["FlightApiController@index"]
+Ra8b872be9c9808496ada9cfd07f97f90 --> C8202443e26b7883d7cbd7fad0933edf6
+
+Ra8b872be9c9808496ada9cfd07f97f90["POST api/flights"]
+C33875c6d45366ed38af6e844a5afafd5["FlightApiController@store"]
+Ra8b872be9c9808496ada9cfd07f97f90 --> C33875c6d45366ed38af6e844a5afafd5
+
+R5ced7ef996396ce50a10dc95a820089c["GET|HEAD api/flights/{flight}"]
+C13f08e1b3c061bad577337b060f92ad7["FlightApiController@show"]
+R5ced7ef996396ce50a10dc95a820089c --> C13f08e1b3c061bad577337b060f92ad7
+
+R5ced7ef996396ce50a10dc95a820089c["PUT|PATCH api/flights/{flight}"]
+C24694f38d1cb39b87c48de5ec0d315a2["FlightApiController@update"]
+R5ced7ef996396ce50a10dc95a820089c --> C24694f38d1cb39b87c48de5ec0d315a2
+
+R5ced7ef996396ce50a10dc95a820089c["DELETE api/flights/{flight}"]
+C1d830730ca1d076a4525fac5187deded["FlightApiController@destroy"]
+R5ced7ef996396ce50a10dc95a820089c --> C1d830730ca1d076a4525fac5187deded
+
+R8b0122222effea2d90786a8c2c8d9308["POST api/login"]
+C699c6e85d4cb56caae6dc9cb7b859b96["AuthController@login"]
+R8b0122222effea2d90786a8c2c8d9308 --> C699c6e85d4cb56caae6dc9cb7b859b96
+
+R2266041fc84f5219abec09e4e259af73["POST api/logout"]
+C0d3c702ab152419fccd6fb27bd4225c8["AuthController@logout"]
+R2266041fc84f5219abec09e4e259af73 --> C0d3c702ab152419fccd6fb27bd4225c8
+
+R65dbf1974514ac022462a339c35300bf["POST api/register"]
+C8885d6034688541ce09fa704a78efeac["AuthController@register"]
+R65dbf1974514ac022462a339c35300bf --> C8885d6034688541ce09fa704a78efeac
+
+R9f9a89ab5198f0b43547c460775d7720["GET|HEAD api/schedules"]
+C2b976b2a2e439a2306611680de2ebef7["ScheduleApiController@index"]
+R9f9a89ab5198f0b43547c460775d7720 --> C2b976b2a2e439a2306611680de2ebef7
+
+R9f9a89ab5198f0b43547c460775d7720["POST api/schedules"]
+Cd803e3ca089f8cef0013be689b2ff21d["ScheduleApiController@store"]
+R9f9a89ab5198f0b43547c460775d7720 --> Cd803e3ca089f8cef0013be689b2ff21d
+
+Rdbcac6c918f2f8b104810b12d37cc652["PUT|PATCH api/schedules/{schedule}"]
+C91acd862a11f58eb5f07ae532ef508f6["ScheduleApiController@update"]
+Rdbcac6c918f2f8b104810b12d37cc652 --> C91acd862a11f58eb5f07ae532ef508f6
+
+Rdbcac6c918f2f8b104810b12d37cc652["DELETE api/schedules/{schedule}"]
+C4ee15b3ca896ecaf4664203991db24b4["ScheduleApiController@destroy"]
+Rdbcac6c918f2f8b104810b12d37cc652 --> C4ee15b3ca896ecaf4664203991db24b4
+
+R8ece00ae9aa0ddd8bd2a5ae7ea8b0e30["GET|HEAD api/tickets/verify/{uuid}"]
+C9500628de6546493532fa0e0b341d0cf["TicketVerificationController@ver…"]
+R8ece00ae9aa0ddd8bd2a5ae7ea8b0e30 --> C9500628de6546493532fa0e0b341d0cf
+
+Ra898d1a27e16aa7e7ddd19b490f24c4a["GET|HEAD api/tickets/{uuid}/download"]
+C2d5b88d93810303946c4dfde01820c70["TicketDownloadController@downl…"]
+Ra898d1a27e16aa7e7ddd19b490f24c4a --> C2d5b88d93810303946c4dfde01820c70
+
+Rc5c7e95fc0d377545e483a8ef9626fc7["POST api/webhooks/payment/callback"]
+C0909813b6c1d29d9bc92879d3265612a["PaymentWebhookController@han…"]
+Rc5c7e95fc0d377545e483a8ef9626fc7 --> C0909813b6c1d29d9bc92879d3265612a
+
+Rfe789e3ae80084e0096692202e6c8838["GET|HEAD boarding-pass/verify/{uuid}"]
+C0f3f9262b52eac7d5c4cc11ae0801143["BoardingPassController@verify"]
+Rfe789e3ae80084e0096692202e6c8838 --> C0f3f9262b52eac7d5c4cc11ae0801143
+
+R0bbacf3f1e32d3cd75ca1ef549bd1fc6["GET|HEAD boarding-pass/{uuid}/download"]
+C1ec03053485aa2e90d92f371869330dc["BoardingPassController@do…"]
+R0bbacf3f1e32d3cd75ca1ef549bd1fc6 --> C1ec03053485aa2e90d92f371869330dc
+
+Rc3664923d92bf933cb07616a10e76614["GET|HEAD bookings"]
+Cf163c0e5c6f55ed8841de2a75242c5ba["BookingController@index"]
+Rc3664923d92bf933cb07616a10e76614 --> Cf163c0e5c6f55ed8841de2a75242c5ba
+
+Rc3664923d92bf933cb07616a10e76614["POST bookings"]
+C91cd231129929f016901ea8143af0bd6["BookingController@store"]
+Rc3664923d92bf933cb07616a10e76614 --> C91cd231129929f016901ea8143af0bd6
+
+Rd3546a6e718476e596acc3b3e2401f49["GET|HEAD bookings/confirm"]
+C092a2d95cb64b74f288f14be92b02e9b["BookingController@confirm"]
+Rd3546a6e718476e596acc3b3e2401f49 --> C092a2d95cb64b74f288f14be92b02e9b
+
+R16e109cb68da38b72315f743aa1a9ddc["GET|HEAD bookings/create"]
+Cc171f8d5c5948acb161285333ba4c99e["BookingController@create"]
+R16e109cb68da38b72315f743aa1a9ddc --> Cc171f8d5c5948acb161285333ba4c99e
+
+R16e109cb68da38b72315f743aa1a9ddc["POST bookings/create"]
+C040063b7669d75e11fc98dd5d61d5d4d["BookingController@selectSchedule"]
+R16e109cb68da38b72315f743aa1a9ddc --> C040063b7669d75e11fc98dd5d61d5d4d
+
+R109b90259a52d08f1c8603ecbc4ffaea["GET|HEAD bookings/passengers"]
+C51617411032d67f26577af513b54c352["BookingController@passengers"]
+R109b90259a52d08f1c8603ecbc4ffaea --> C51617411032d67f26577af513b54c352
+
+R109b90259a52d08f1c8603ecbc4ffaea["POST bookings/passengers"]
+C5b06b642dbadc7807b7a8600ac95f703["BookingController@savePassengers"]
+R109b90259a52d08f1c8603ecbc4ffaea --> C5b06b642dbadc7807b7a8600ac95f703
+
+R214115cd4a7236b0a2a8cb38ce3d95bb["DELETE bookings/{booking}"]
+C510e81d81d149f3d62c438f2b2322285["BookingController@destroy"]
+R214115cd4a7236b0a2a8cb38ce3d95bb --> C510e81d81d149f3d62c438f2b2322285
+
+R4166b3f08b1b75dec06a6c5f7ff8f8aa["GET|HEAD bookings/{booking}/ticket"]
+C0e5015a0e593a3ace0f87e86ef1fa30b["BookingController@ticket"]
+R4166b3f08b1b75dec06a6c5f7ff8f8aa --> C0e5015a0e593a3ace0f87e86ef1fa30b
+
+R3b78786f324aa252fb7f7a58ebd2c4e4["GET|HEAD checkin"]
+C47e3fd2dca229ab5d56731e03761c954["WebCheckInController@index"]
+R3b78786f324aa252fb7f7a58ebd2c4e4 --> C47e3fd2dca229ab5d56731e03761c954
+
+R3b78786f324aa252fb7f7a58ebd2c4e4["POST checkin"]
+Cab5d8c47031fb863c1d4f48f490a6aa2["WebCheckInController@lookup"]
+R3b78786f324aa252fb7f7a58ebd2c4e4 --> Cab5d8c47031fb863c1d4f48f490a6aa2
+
+R898e306889f4c5e9d301672d73f4826b["GET|HEAD checkin/portal/{pnr}"]
+C20b8548fbca4940e4614220c7a9f9972["WebCheckInController@passengers"]
+R898e306889f4c5e9d301672d73f4826b --> C20b8548fbca4940e4614220c7a9f9972
+
+R898e306889f4c5e9d301672d73f4826b["POST checkin/portal/{pnr}"]
+C90423ea0c316a390c6be04337acddb16["PassengerCheckInController@process"]
+R898e306889f4c5e9d301672d73f4826b --> C90423ea0c316a390c6be04337acddb16
+
+R3431669706984f2c7227dd84a5fb5131["GET|HEAD confirm-password"]
+Cd84cf0d86514de3dbd0202b1115818a2["ConfirmablePasswordController@show"]
+R3431669706984f2c7227dd84a5fb5131 --> Cd84cf0d86514de3dbd0202b1115818a2
+
+R3431669706984f2c7227dd84a5fb5131["POST confirm-password"]
+Ce6ac43f515b1e2c1bbb81fdd6bc256e3["ConfirmablePasswordController@store"]
+R3431669706984f2c7227dd84a5fb5131 --> Ce6ac43f515b1e2c1bbb81fdd6bc256e3
+
+Rdc7161be3dbf2250c8954e560cc35060["GET|HEAD dashboard"]
+C270e9ff765c2d8d495dff6c83346ed16["DashboardController@index"]
+Rdc7161be3dbf2250c8954e560cc35060 --> C270e9ff765c2d8d495dff6c83346ed16
+
+Rea276d3ae1a300422acd31920fbebc7b["GET|HEAD flights"]
+Ccbf2ab359bf19c9ea2ca0d109c91cd2b["FlightController@index"]
+Rea276d3ae1a300422acd31920fbebc7b --> Ccbf2ab359bf19c9ea2ca0d109c91cd2b
+
+R39b665e2683a7d06f0dcac256173edea["GET|HEAD flights/{flight}"]
+Cb5e5cbbc024bd6094dd91b2ecd77dd00["FlightController@show"]
+R39b665e2683a7d06f0dcac256173edea --> Cb5e5cbbc024bd6094dd91b2ecd77dd00
+
+R00e2a8f568ff592a6f19d15f6fece067["GET|HEAD forgot-password"]
+Cf38d60ac4bf5b6f3fd0d5c319f06ab0c["PasswordResetLinkController@create"]
+R00e2a8f568ff592a6f19d15f6fece067 --> Cf38d60ac4bf5b6f3fd0d5c319f06ab0c
+
+R00e2a8f568ff592a6f19d15f6fece067["POST forgot-password"]
+C2a8aa01ff178beb3a40bcb5edd590be3["PasswordResetLinkController@store"]
+R00e2a8f568ff592a6f19d15f6fece067 --> C2a8aa01ff178beb3a40bcb5edd590be3
+
+Rd56b699830e77ba53855679cb1d252da["GET|HEAD login"]
+C924991ab2f7166f22a7c3192fc2ab7fa["AuthenticatedSessionController@create"]
+Rd56b699830e77ba53855679cb1d252da --> C924991ab2f7166f22a7c3192fc2ab7fa
+
+Rd56b699830e77ba53855679cb1d252da["POST login"]
+C52bb12863fd51f8cf29e113b92622f3c["AuthenticatedSessionController@store"]
+Rd56b699830e77ba53855679cb1d252da --> C52bb12863fd51f8cf29e113b92622f3c
+
+R4236a440a662cc8253d7536e5aa17942["POST logout"]
+Cc40cedf8bf39324bcbf26c8af084f685["AuthenticatedSessionController@destroy"]
+R4236a440a662cc8253d7536e5aa17942 --> Cc40cedf8bf39324bcbf26c8af084f685
+
+R1bcc95b33f8c66119261151734401da6["GET|HEAD manage-booking"]
+C412389d0fe2ea4f7f8d4cafa257d8396["ManageBookingController@index"]
+R1bcc95b33f8c66119261151734401da6 --> C412389d0fe2ea4f7f8d4cafa257d8396
+
+R1bcc95b33f8c66119261151734401da6["POST manage-booking"]
+Cf4ab5e1d0b6ab0ef3d3572c778d7ce5d["ManageBookingController@lookup"]
+R1bcc95b33f8c66119261151734401da6 --> Cf4ab5e1d0b6ab0ef3d3572c778d7ce5d
+
+Rd0361f7dabf046a1b25fe00d2471b879["POST manage-booking/lookup"]
+Cf4ab5e1d0b6ab0ef3d3572c778d7ce5d["ManageBookingController@lookup"]
+Rd0361f7dabf046a1b25fe00d2471b879 --> Cf4ab5e1d0b6ab0ef3d3572c778d7ce5d
+
+R221d8251bf98aca4d6228bd4a225f3c2["GET|HEAD manage-booking/portal/{pnr}"]
+Ce045955d59ee7219303cc538b799fa51["ManageBookingController@portal"]
+R221d8251bf98aca4d6228bd4a225f3c2 --> Ce045955d59ee7219303cc538b799fa51
+
+Rf37bd2f66651e7d46f6d38440f2bc5dd["GET|HEAD notifications"]
+C0a19d2d976cd592312abc89fcb18ff78["NotificationController@index"]
+Rf37bd2f66651e7d46f6d38440f2bc5dd --> C0a19d2d976cd592312abc89fcb18ff78
+
+R2addb56359e711499ca353151088e0cb["POST notifications/{notification}/read"]
+C624d3adf30497ebc59cd7d416c78d370["NotificationController@markAsRead"]
+R2addb56359e711499ca353151088e0cb --> C624d3adf30497ebc59cd7d416c78d370
+
+R11313a393d2d0f2a1a9a4d5a36f1f621["GET|HEAD passenger/flight/{segment}/timeline"]
+Cccd23d0592252fb3834afb00d9261918["TimelineController@show"]
+R11313a393d2d0f2a1a9a4d5a36f1f621 --> Cccd23d0592252fb3834afb00d9261918
+
+R5f4dcc3b5aa765d61d8327deb882cf99["PUT password"]
+C3ed8c61136513ee9ba4441f12283a071["PasswordController@update"]
+R5f4dcc3b5aa765d61d8327deb882cf99 --> C3ed8c61136513ee9ba4441f12283a071
+
+R7d97481b1fe66f4b51db90da7e794d9f["GET|HEAD profile"]
+Cafeb2e2ce8a9cd3d73a11e26e0e300fd["ProfileController@edit"]
+R7d97481b1fe66f4b51db90da7e794d9f --> Cafeb2e2ce8a9cd3d73a11e26e0e300fd
+
+R7d97481b1fe66f4b51db90da7e794d9f["PATCH profile"]
+C239def4a1d1bbe013bda94645f0613b1["ProfileController@update"]
+R7d97481b1fe66f4b51db90da7e794d9f --> C239def4a1d1bbe013bda94645f0613b1
+
+R7d97481b1fe66f4b51db90da7e794d9f["DELETE profile"]
+C413838768e1012164d3dafa1bce11e1d["ProfileController@destroy"]
+R7d97481b1fe66f4b51db90da7e794d9f --> C413838768e1012164d3dafa1bce11e1d
+
+R9de4a97425678c5b1288aa70c1669a64["GET|HEAD register"]
+Cd3e936d03f30b047eb9feed26470ab9f["RegisteredUserController@create"]
+R9de4a97425678c5b1288aa70c1669a64 --> Cd3e936d03f30b047eb9feed26470ab9f
+
+R9de4a97425678c5b1288aa70c1669a64["POST register"]
+Ca838b5d7daaccbbb195387aa2db7257f["RegisteredUserController@store"]
+R9de4a97425678c5b1288aa70c1669a64 --> Ca838b5d7daaccbbb195387aa2db7257f
+
+R037c60027d8fd8b8221d2a4ecc803574["POST reset-password"]
+C9b1bdcabf6934cf37f92c734c6daf05f["NewPasswordController@store"]
+R037c60027d8fd8b8221d2a4ecc803574 --> C9b1bdcabf6934cf37f92c734c6daf05f
+
+R71afbe2a30276e49acde57ba9afb4c48["GET|HEAD reset-password/{token}"]
+C9c5df06e0caaf3c96df69c188339ee67["NewPasswordController@create"]
+R71afbe2a30276e49acde57ba9afb4c48 --> C9c5df06e0caaf3c96df69c188339ee67
+
+Rfb1ffbc75974b217b98e2ddc6db57d23["GET|HEAD sanctum/csrf-cookie"]
+C58698372e1bdb0593fbbb6a0f213a629["CsrfCookieController@show"]
+Rfb1ffbc75974b217b98e2ddc6db57d23 --> C58698372e1bdb0593fbbb6a0f213a629
+
+R96fe320c72d055a6d8db6dc39a15ffe3["GET|HEAD search-flights"]
+Ccbf2ab359bf19c9ea2ca0d109c91cd2b["FlightController@index"]
+R96fe320c72d055a6d8db6dc39a15ffe3 --> Ccbf2ab359bf19c9ea2ca0d109c91cd2b
+
+R0e333cc91255e170d273fa64d4d0531a["GET|HEAD tickets/{uuid}/download"]
+C720b956469d2e2caba54e159b8046029["TicketDownloadController@download"]
+R0e333cc91255e170d273fa64d4d0531a --> C720b956469d2e2caba54e159b8046029

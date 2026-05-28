@@ -6,6 +6,22 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
+            ssr: false,
         }),
     ],
+    build: {
+        outDir: 'public/build',
+        manifest: true,
+        minify: 'terser',
+        sourcemap: false,
+        rollupOptions: {
+            output: {
+                manualChunks: undefined,
+            },
+        },
+    },
+    server: {
+        hmr: false,
+        middlewareMode: true,
+    },
 });

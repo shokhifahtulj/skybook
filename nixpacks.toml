@@ -1,19 +1,70 @@
+[build]
+# Use fixed PORT environment variable
+cmd = "set -e && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan optimize && npm run build && php artisan storage:link || true"
+
 [phases.setup]
-nixPkgs = ["php83","php83Extensions.mbstring","php83Extensions.pdo_mysql","php83Extensions.gd","nodejs_22"]
+nixPkgs = [
+  "php83",
+  "php83Extensions.bcmath",
+  "php83Extensions.ctype",
+  "php83Extensions.curl",
+  "php83Extensions.dom",
+  "php83Extensions.fileinfo",
+  "php83Extensions.filter",
+  "php83Extensions.ftp",
+  "php83Extensions.gd",
+  "php83Extensions.iconv",
+  "php83Extensions.intl",
+  "php83Extensions.json",
+  "php83Extensions.ldap",
+  "php83Extensions.mbstring",
+  "php83Extensions.openssl",
+  "php83Extensions.pcntl",
+  "php83Extensions.pdo",
+  "php83Extensions.pdo_mysql",
+  "php83Extensions.pdo_pgsql",
+  "php83Extensions.phar",
+  "php83Extensions.posix",
+  "php83Extensions.reflection",
+  "php83Extensions.session",
+  "php83Extensions.shmop",
+  "php83Extensions.simplexml",
+  "php83Extensions.sockets",
+  "php83Extensions.sodium",
+  "php83Extensions.spl",
+  "php83Extensions.sqlite3",
+  "php83Extensions.standard",
+  "php83Extensions.sysvmsg",
+  "php83Extensions.sysvsem",
+  "php83Extensions.sysvshm",
+  "php83Extensions.tokenizer",
+  "php83Extensions.xml",
+  "php83Extensions.xmlreader",
+  "php83Extensions.xmlwriter",
+  "php83Extensions.zip",
+  "php83Extensions.zlib",
+  "php83.xdebug",
+  "nodejs_22",
+  "libpq",
+  "postgresql"
+]
 
 [phases.install]
 cmds = [
-  "composer install --no-dev --optimize-autoloader",
-  "npm install"
+  "composer install --no-dev --optimize-autoloader --no-interaction",
+  "npm install --legacy-peer-deps --no-audit --no-fund"
 ]
 
 [phases.build]
 cmds = [
+  "set -e",
   "npm run build",
   "php artisan config:cache",
   "php artisan route:cache",
-  "php artisan view:cache"
+  "php artisan view:cache",
+  "php artisan storage:link || true"
 ]
 
 [start]
-cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
+# Start command with migrations and PORT binding
+cmd = "sh -c 'php artisan migrate --force && php -S 0.0.0.0:${PORT} -t public'"

@@ -1,0 +1,166 @@
+
+  GET|HEAD        / ............................................................... generated::XrKunKsSjnNHuofe
+  GET|HEAD        admin/aircrafts ...................... admin.aircrafts.index › Admin\AircraftController@index
+  POST            admin/aircrafts ...................... admin.aircrafts.store › Admin\AircraftController@store
+  GET|HEAD        admin/aircrafts/create ............. admin.aircrafts.create › Admin\AircraftController@create
+  GET|HEAD        admin/aircrafts/{aircraft} ............. admin.aircrafts.show › Admin\AircraftController@show
+  PUT|PATCH       admin/aircrafts/{aircraft} ......... admin.aircrafts.update › Admin\AircraftController@update
+  DELETE          admin/aircrafts/{aircraft} ....... admin.aircrafts.destroy › Admin\AircraftController@destroy
+  GET|HEAD        admin/aircrafts/{aircraft}/edit ........ admin.aircrafts.edit › Admin\AircraftController@edit
+  GET|HEAD        admin/aircrafts/{aircraft}/seats admin.aircrafts.seats.index › Admin\AircraftSeatController@…
+  DELETE          admin/aircrafts/{aircraft}/seats admin.aircrafts.seats.destroyAll › Admin\AircraftSeatContro…
+  POST            admin/aircrafts/{aircraft}/seats/generate admin.aircrafts.seats.generate › Admin\AircraftSea…
+  GET|HEAD        admin/airlines ......................... admin.airlines.index › Admin\AirlineController@index
+  POST            admin/airlines ......................... admin.airlines.store › Admin\AirlineController@store
+  GET|HEAD        admin/airlines/create ................ admin.airlines.create › Admin\AirlineController@create
+  GET|HEAD        admin/airlines/{airline} ................. admin.airlines.show › Admin\AirlineController@show
+  PUT|PATCH       admin/airlines/{airline} ............. admin.airlines.update › Admin\AirlineController@update
+  DELETE          admin/airlines/{airline} ........... admin.airlines.destroy › Admin\AirlineController@destroy
+  GET|HEAD        admin/airlines/{airline}/edit ............ admin.airlines.edit › Admin\AirlineController@edit
+  GET|HEAD        admin/airports ......................... admin.airports.index › Admin\AirportController@index
+  POST            admin/airports ......................... admin.airports.store › Admin\AirportController@store
+  GET|HEAD        admin/airports/create ................ admin.airports.create › Admin\AirportController@create
+  GET|HEAD        admin/airports/{airport} ................. admin.airports.show › Admin\AirportController@show
+  PUT|PATCH       admin/airports/{airport} ............. admin.airports.update › Admin\AirportController@update
+  DELETE          admin/airports/{airport} ........... admin.airports.destroy › Admin\AirportController@destroy
+  GET|HEAD        admin/airports/{airport}/edit ............ admin.airports.edit › Admin\AirportController@edit
+  GET|HEAD        admin/analytics/executive admin.analytics.executive › Admin\Analytics\ExecutiveDashboardCont…
+  GET|HEAD        admin/dashboard ................................. admin.dashboard › DashboardController@admin
+  GET|HEAD        admin/flights ............................ admin.flights.index › Admin\FlightController@index
+  POST            admin/flights ............................ admin.flights.store › Admin\FlightController@store
+  GET|HEAD        admin/flights/create ................... admin.flights.create › Admin\FlightController@create
+  GET|HEAD        admin/flights/{flight} ..................... admin.flights.show › Admin\FlightController@show
+  PUT|PATCH       admin/flights/{flight} ................. admin.flights.update › Admin\FlightController@update
+  DELETE          admin/flights/{flight} ............... admin.flights.destroy › Admin\FlightController@destroy
+  GET|HEAD        admin/flights/{flight}/edit ................ admin.flights.edit › Admin\FlightController@edit
+  GET|HEAD        admin/operations ......... admin.operations.index › Admin\OperationsDashboardController@index
+  GET|HEAD        admin/operations-baggage/drop admin.operations.baggage.drop › Admin\Operations\BaggageContro…
+  POST            admin/operations-baggage/generate admin.operations.baggage.generate › Admin\Operations\Bagga…
+  GET|HEAD        admin/operations/engineering admin.operations.engineering › Admin\Operations\EngineeringCont…
+  POST            admin/operations/engineering/store admin.operations.engineering.store › Admin\Operations\Eng…
+  POST            admin/operations/engineering/{maintenance}/release admin.operations.engineering.release › Ad…
+  GET|HEAD        admin/operations/gates ....... admin.operations.gates › Admin\Operations\GateController@index
+  POST            admin/operations/gates/{schedule}/swap admin.operations.gates.swap › Admin\Operations\GateCo…
+  GET|HEAD        admin/operations/passengers/{id}/timeline admin.operations.passengers.timeline › Admin\Opera…
+  GET|HEAD        admin/operations/reaccommodation admin.operations.reaccommodation › Admin\Operations\Reaccom…
+  GET|HEAD        admin/operations/reaccommodation/{schedule}/intelligence admin.operations.reaccommodation.in…
+  POST            admin/operations/reaccommodation/{schedule}/rebook admin.operations.reaccommodation.rebook  …
+  GET|HEAD        admin/operations/simulation admin.operations.simulation › Admin\Operations\SimulationControl…
+  POST            admin/operations/simulation/start admin.operations.simulation.start › Admin\Operations\Simul…
+  GET|HEAD        admin/operations/simulation/{session}/replay admin.operations.simulation.replay › Admin\Oper…
+  POST            admin/operations/simulation/{session}/restore admin.operations.simulation.restore › Admin\Op…
+  GET|HEAD        admin/operations/{schedule} admin.operations.show › Admin\OperationsDashboardController@show
+  GET|HEAD        admin/operations/{schedule}/assignment admin.operations.assignment › Admin\Operations\Assign…
+  POST            admin/operations/{schedule}/assignment/aircraft admin.operations.assignment.aircraft › Admin…
+  POST            admin/operations/{schedule}/assignment/crew admin.operations.assignment.crew › Admin\Operati…
+  DELETE          admin/operations/{schedule}/assignment/crew/{assignment} admin.operations.assignment.crew.re…
+  POST            admin/operations/{schedule}/irops/cancel admin.operations.irops.cancel › Admin\Operations\Ir…
+  POST            admin/operations/{schedule}/irops/delay admin.operations.irops.delay › Admin\Operations\Irop…
+  POST            admin/operations/{schedule}/irops/gate admin.operations.irops.gate › Admin\Operations\IropsC…
+  GET|HEAD        admin/routes ............................... admin.routes.index › Admin\RouteController@index
+  POST            admin/routes ............................... admin.routes.store › Admin\RouteController@store
+  GET|HEAD        admin/routes/create ...................... admin.routes.create › Admin\RouteController@create
+  GET|HEAD        admin/routes/{route} ......................... admin.routes.show › Admin\RouteController@show
+  PUT|PATCH       admin/routes/{route} ..................... admin.routes.update › Admin\RouteController@update
+  DELETE          admin/routes/{route} ................... admin.routes.destroy › Admin\RouteController@destroy
+  GET|HEAD        admin/routes/{route}/edit .................... admin.routes.edit › Admin\RouteController@edit
+  GET|HEAD        admin/schedules ...................... admin.schedules.index › Admin\ScheduleController@index
+  POST            admin/schedules ...................... admin.schedules.store › Admin\ScheduleController@store
+  GET|HEAD        admin/schedules/create ............. admin.schedules.create › Admin\ScheduleController@create
+  GET|HEAD        admin/schedules/{schedule} ............. admin.schedules.show › Admin\ScheduleController@show
+  PUT|PATCH       admin/schedules/{schedule} ......... admin.schedules.update › Admin\ScheduleController@update
+  DELETE          admin/schedules/{schedule} ....... admin.schedules.destroy › Admin\ScheduleController@destroy
+  GET|HEAD        admin/schedules/{schedule}/edit ........ admin.schedules.edit › Admin\ScheduleController@edit
+  GET|HEAD        admin/users .................................. admin.users.index › Admin\UserController@index
+  POST            admin/users .................................. admin.users.store › Admin\UserController@store
+  GET|HEAD        admin/users/create ......................... admin.users.create › Admin\UserController@create
+  GET|HEAD        admin/users/{user} ............................. admin.users.show › Admin\UserController@show
+  PUT|PATCH       admin/users/{user} ......................... admin.users.update › Admin\UserController@update
+  DELETE          admin/users/{user} ....................... admin.users.destroy › Admin\UserController@destroy
+  GET|HEAD        admin/users/{user}/edit ........................ admin.users.edit › Admin\UserController@edit
+  GET|HEAD        api/baggage-tags/{tag}/render api.baggage-tags.render › Api\BaggageTagRenderController@render
+  POST            api/boarding-pass/validate generated::S6LTOzwJhLDSamLp › Api\BoardingPassValidationControlle…
+  POST            api/bookings ................... generated::t2JCpHOF2fXiiUxp › API\BookingApiController@store
+  GET|HEAD        api/bookings ................... generated::fDdpKTXd8M2aS3et › API\BookingApiController@index
+  POST            api/bookings/create-draft ......... generated::BdeC6jT0CB8VgR5N › Api\BookingController@store
+  PUT             api/bookings/{booking} ........ generated::FzqvNt8iPOhjH415 › API\BookingApiController@update
+  GET|HEAD        api/bookings/{booking} .......... generated::oDMNqlGuS1GhsLx4 › API\BookingApiController@show
+  DELETE          api/bookings/{booking} ....... generated::e2SIy0pb2kQr4sal › API\BookingApiController@destroy
+  POST            api/bookings/{pnr}/pay/failed generated::LrJmay8RtOVsZdpL › Api\PaymentController@simulateFa…
+  POST            api/bookings/{pnr}/pay/success generated::NzYLQoVvalMbfszx › Api\PaymentController@simulateS…
+  GET|HEAD        api/flights ............................... api.flights.index › API\FlightApiController@index
+  POST            api/flights ............................... api.flights.store › API\FlightApiController@store
+  GET|HEAD        api/flights/{flight} ........................ api.flights.show › API\FlightApiController@show
+  PUT|PATCH       api/flights/{flight} .................... api.flights.update › API\FlightApiController@update
+  DELETE          api/flights/{flight} .................. api.flights.destroy › API\FlightApiController@destroy
+  POST            api/login ............................ generated::r5kutIp9319RH4ey › API\AuthController@login
+  POST            api/logout .......................... generated::WwJ2O0r5ng85nh4B › API\AuthController@logout
+  POST            api/notifications/{id}/acknowledge generated::vhiRmgbdyOXuSj7g › Api\PassengerNotificationCo…
+  GET|HEAD        api/operations/{schedule}/poll generated::nYpOfJZXrKANqJNQ › Api\OperationsPollingController…
+  POST            api/register ...................... generated::kRSdLv2muIwW5si4 › API\AuthController@register
+  GET|HEAD        api/schedules ............................. schedules.index › API\ScheduleApiController@index
+  POST            api/schedules ............................. schedules.store › API\ScheduleApiController@store
+  PUT|PATCH       api/schedules/{schedule} ................ schedules.update › API\ScheduleApiController@update
+  DELETE          api/schedules/{schedule} .............. schedules.destroy › API\ScheduleApiController@destroy
+  GET|HEAD        api/tickets/verify/{uuid} generated::ojeNDHEKYuNiGM0r › Api\TicketVerificationController@ver…
+  GET|HEAD        api/tickets/{uuid}/download generated::TIiUHXfoKNyZuAH2 › Api\TicketDownloadController@downl…
+  POST            api/webhooks/payment/callback generated::5idAzMx3VQlg2V9u › Api\PaymentWebhookController@han…
+  GET|HEAD        boarding-pass/verify/{uuid} boarding-pass.verify › Web\CheckIn\BoardingPassController@verify
+  GET|HEAD        boarding-pass/{uuid}/download boarding-pass.download › Web\CheckIn\BoardingPassController@do…
+  GET|HEAD        bookings ........................................... bookings.index › BookingController@index
+  POST            bookings ........................................... bookings.store › BookingController@store
+  GET|HEAD        bookings/confirm ............................... bookings.confirm › BookingController@confirm
+  GET|HEAD        bookings/create .................................. bookings.create › BookingController@create
+  POST            bookings/create ................... bookings.create.select › BookingController@selectSchedule
+  GET|HEAD        bookings/passengers ...................... bookings.passengers › BookingController@passengers
+  POST            bookings/passengers ............. bookings.passengers.save › BookingController@savePassengers
+  DELETE          bookings/{booking} ............................. bookings.destroy › BookingController@destroy
+  GET|HEAD        bookings/{booking}/ticket ........................ bookings.ticket › BookingController@ticket
+  GET|HEAD        checkin .............................. checkin.index › Web\CheckIn\WebCheckInController@index
+  POST            checkin ............................ checkin.lookup › Web\CheckIn\WebCheckInController@lookup
+  GET|HEAD        checkin/portal/{pnr} ........... checkin.portal › Web\CheckIn\WebCheckInController@passengers
+  POST            checkin/portal/{pnr} ....... checkin.process › Web\CheckIn\PassengerCheckInController@process
+  GET|HEAD        checkin/portal/{pnr}/confirmation checkin.confirmation › Web\CheckIn\PassengerCheckInControl…
+  GET|HEAD        checkin/portal/{pnr}/seatmap/{passenger_id} checkin.seatmap › Web\CheckIn\SeatSelectionContr…
+  POST            checkin/portal/{pnr}/seatmap/{passenger_id} checkin.seatmap.update › Web\CheckIn\SeatSelecti…
+  GET|HEAD        confirm-password ................. password.confirm › Auth\ConfirmablePasswordController@show
+  POST            confirm-password ..... generated::p5zrFtYlbOEP9W7S › Auth\ConfirmablePasswordController@store
+  GET|HEAD        dashboard ............................................. dashboard › DashboardController@index
+  POST            email/verification-notification verification.send › Auth\EmailVerificationNotificationContro…
+  GET|HEAD        flights .............................................. flights.index › FlightController@index
+  GET|HEAD        flights/{flight} ....................................... flights.show › FlightController@show
+  GET|HEAD        forgot-password .................. password.request › Auth\PasswordResetLinkController@create
+  POST            forgot-password ..................... password.email › Auth\PasswordResetLinkController@store
+  GET|HEAD        login .................................... login › Auth\AuthenticatedSessionController@create
+  POST            login ............... generated::kvMV08tMnL4jbGnE › Auth\AuthenticatedSessionController@store
+  POST            logout ................................. logout › Auth\AuthenticatedSessionController@destroy
+  GET|HEAD        manage-booking ..................... manage-booking.index › Web\ManageBookingController@index
+  POST            manage-booking ................... manage-booking.lookup › Web\ManageBookingController@lookup
+  POST            manage-booking/lookup ...... manage-booking.lookup.alias › Web\ManageBookingController@lookup
+  GET|HEAD        manage-booking/portal/{pnr} ...... manage-booking.portal › Web\ManageBookingController@portal
+  GET|HEAD        manage-booking/portal/{pnr}/ancillary manage-booking.ancillary.catalog › Web\AncillaryContro…
+  POST            manage-booking/portal/{pnr}/ancillary manage-booking.ancillary.store › Web\AncillaryControll…
+  GET|HEAD        notifications ............................ notifications.index › NotificationController@index
+  POST            notifications/{notification}/read .... notifications.read › NotificationController@markAsRead
+  GET|HEAD        passenger/flight/{segment}/boarding-pass passenger.boarding-pass › Passenger\BoardingPassCon…
+  GET|HEAD        passenger/flight/{segment}/timeline .. passenger.timeline › Passenger\TimelineController@show
+  PUT             password ................................... password.update › Auth\PasswordController@update
+  GET|HEAD        profile ............................................... profile.edit › ProfileController@edit
+  PATCH           profile ........................................... profile.update › ProfileController@update
+  DELETE          profile ......................................... profile.destroy › ProfileController@destroy
+  GET|HEAD        register .................................... register › Auth\RegisteredUserController@create
+  POST            register .................. generated::8vrI8JjtNNCu1pnq › Auth\RegisteredUserController@store
+  POST            reset-password ............................ password.store › Auth\NewPasswordController@store
+  GET|HEAD        reset-password/{token} ................... password.reset › Auth\NewPasswordController@create
+  GET|HEAD        sanctum/csrf-cookie ....... sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
+  GET|HEAD        search-flights ...................................... search.flights › FlightController@index
+  GET|HEAD        storage/{path} ................................................................ storage.local
+  PUT             storage/{path} ......................................................... storage.local.upload
+  GET|HEAD        tickets/{uuid}/download ............ tickets.download › Api\TicketDownloadController@download
+  GET|HEAD        up .............................................................. generated::HDfQwU0BezCKdp4q
+  GET|HEAD        verify-email ................... verification.notice › Auth\EmailVerificationPromptController
+  GET|HEAD        verify-email/{id}/{hash} ................... verification.verify › Auth\VerifyEmailController
+  GET|HEAD        verify/ticket/{uuid} ......................................................... tickets.verify
+
+                                                                                           Showing [162] routes
+
